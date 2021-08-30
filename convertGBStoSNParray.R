@@ -1,3 +1,12 @@
+args <- commandArgs(TRUE)
+
+
+meb <- args[1]	# "GM" or other "PGD039"
+seed <- args[2]	# "Mother"
+wd <- as.numeric(args[3]) # "/uz/data/hydra/genomicscore/raw/HiSeqComputed/new/diagnostics/uz/cme_pgd/gcpu/samples/"
+
+
+
 library(SNPlocs.Hsapiens.dbSNP144.GRCh37)
 library(VariantAnnotation)
 library(vcfR)
@@ -6,17 +15,10 @@ library(intrval)
 
 pct <- 100
 
-meb <- c("GM")
-#,"PGD230","PGD111","PGD058","PGD051","PGD088","PGD146")
-	# "GBS_PGD189_C3","GBS_PGD090_C3","GBS_PGD440_C1","GBS_PGD068_C3","GBS_PGD330_C1")     
-seed <- c("Mother")
-
-
 for (i in 1:length(meb)) {
 	id <- meb[i]
 	print(id)
 
-	wd <- "/uz/data/hydra/genomicscore/raw/HiSeqComputed/new/diagnostics/uz/cme_pgd/gcpu/samples/"
 
 	# wd <- "/uz/data/avalok/symbiosys/gcpi_d_uz/cme_pgd/gcpu/runs/"
 	fl <- paste0(wd,"/GBS_PGD_output/merge.vcf.pct",pct,"/",id,".CHR.merge.vcf")	# for PGD230 ect
